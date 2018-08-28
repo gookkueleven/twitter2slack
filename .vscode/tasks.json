@@ -7,7 +7,8 @@
             "label": "run spring-boot project",
             "type": "shell",
             "command": "mvn clean install spring-boot:run",
-            "group": "build"
+            "group": "build",
+            "problemMatcher": []
         },
         {
             "label": "test",
