@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "twitter2slack",
+                "projectName": "twitter2slack",
+                "workingDirectory": "c:\\Users\\ALIENWARE\\workspace\\trainning\\knowledge",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "twitter2slack",
+                "projectName": "twitter2slack",
+                "workingDirectory": "c:\\Users\\ALIENWARE\\workspace\\trainning\\knowledge",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
