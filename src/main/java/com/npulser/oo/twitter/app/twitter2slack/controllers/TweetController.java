@@ -26,5 +26,4 @@ public class TweetController {
         tweetService.getRealTimeTweet(tweetService.getScreenNameId(searchQuery));
         return new ResponseModel("success", null).build(HttpStatus.OK);
     }
-
 }
