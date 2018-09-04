@@ -40,10 +40,6 @@ import twitter4j.User;
 
     public long getScreenNameId(String screenName) throws TwitterException {
         ResponseList<User> userList = twitterClient.searchUsers(screenName, 5);
-        return userList.stream()
-                .filter(obj -> obj.getScreenName().equalsIgnoreCase(screenName))
-                .findFirst()
-                .get()
-                .getId();
+        return userList.stream().findFirst().orElseGet(null).getId();
     } 
  }

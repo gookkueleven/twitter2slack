@@ -21,34 +21,38 @@ public class TwitterListener implements StatusListener{
 
 	@Override
 	public void onException(Exception ex) {
-		ex.printStackTrace();
+		SlackModel slackModel = new SlackModel(ex.getMessage());
+		slackService.send2Slack(slackModel);
 	}
 
 	@Override
 	public void onStatus(Status status) {
-		SlackModel slackModel = new SlackModel(status.getText());
+		SlackModel slackModel = new SlackModel("@" + status.getUser().getScreenName() + " - " + status.getText());
 		slackService.send2Slack(slackModel);
-		System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
 	}
 
 	@Override
 	public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {
-		System.out.println("Got a status deletion notice id:" + statusDeletionNotice.getStatusId());
+		SlackModel slackModel = new SlackModel("@" + statusDeletionNotice.getStatusId() + " - " + "has been deleted");
+		slackService.send2Slack(slackModel);
 	}
 
 	@Override
 	public void onTrackLimitationNotice(int numberOfLimitedStatuses) {
-		System.out.println("Got track limitation notice:" + numberOfLimitedStatuses);
+		SlackModel slackModel = new SlackModel("@" + numberOfLimitedStatuses + " - " + "track has been used");
+		slackService.send2Slack(slackModel);
 	}
 
 	@Override
 	public void onScrubGeo(long userId, long upToStatusId) {
-		System.out.println("Got scrub_geo event userId:" + userId + " upToStatusId:" + upToStatusId);
+		SlackModel slackModel = new SlackModel("@Got scrub_geo event userId:" + userId + " upToStatusId:" + upToStatusId);
+		slackService.send2Slack(slackModel);
 	}
 
 	@Override
 	public void onStallWarning(StallWarning warning) {
-		System.out.println("Got stall warning:" + warning);
+		SlackModel slackModel = new SlackModel("@Got stall warning:" + warning);
+		slackService.send2Slack(slackModel);
 	}
 
 }
