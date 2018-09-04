@@ -29,8 +29,7 @@ public class TwitterConfiguration{
         .setOAuthAccessTokenSecret(accessTokenSecret);
 
         TwitterFactory tf = new TwitterFactory(cb.build());
-        Twitter twitter = tf.getInstance();
-        return twitter;
+        return tf.getInstance();
     }
     
     @Bean
@@ -43,7 +42,6 @@ public class TwitterConfiguration{
         .setOAuthAccessTokenSecret(accessTokenSecret);
 
         TwitterStreamFactory tsf = new TwitterStreamFactory(cb.build());
-        TwitterStream twitterStream = tsf.getInstance();
-		return twitterStream;
+		return tsf.getInstance();
     }
 }

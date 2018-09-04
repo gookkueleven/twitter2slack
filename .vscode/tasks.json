@@ -11,9 +11,15 @@
             "problemMatcher": []
         },
         {
-            "label": "test",
+            "label": "jacoco code coverage",
             "type": "shell",
-            "command": "mvn -B test",
+            "command": "mvn clean package",
+            "group": "test"
+        },
+        {
+            "label": "sonarqube quality gate",
+            "type": "shell",
+            "command": "mvn sonar:sonar",
             "group": "test"
         }
     ]

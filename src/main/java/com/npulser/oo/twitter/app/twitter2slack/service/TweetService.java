@@ -27,13 +27,11 @@ import twitter4j.User;
     }
 
     public void getTweetMessage(String query) throws TwitterException {
-        // Query searchQuery = new Query(query);
-        // QueryResult result = twitterClient.search(searchQuery);
         ResponseList<Status> responseList = twitterClient.getUserTimeline(query);
         slackService.send2Slack(new SlackModel(responseList.get(0).getText()));
     }
 
-    public void getRealTimeTweet(long userId) throws IllegalStateException, TwitterException {
+    public void getRealTimeTweet(long userId) {
         twitterStreamClient.clearListeners();
         TwitterListener listener = new TwitterListener(slackService);
         twitterStreamClient.addListener(listener);
