@@ -19,22 +19,23 @@ import twitter4j.User;
     private Twitter twitterClient;
     private TwitterStream twitterStreamClient;
     private SlackService slackService;
+    private TwitterListener twitterListener;
 
-    public TweetService(Twitter twitterClient, TwitterStream twitterStreamClient, SlackService slackService) {
+    public TweetService(Twitter twitterClient, TwitterStream twitterStreamClient, SlackService slackService, TwitterListener twitterListener) {
         this.twitterClient = twitterClient;
         this.twitterStreamClient = twitterStreamClient;
         this.slackService = slackService;
+        this.twitterListener = twitterListener;
     }
 
     public void getTweetMessage(String query) throws TwitterException {
         ResponseList<Status> responseList = twitterClient.getUserTimeline(query);
-        slackService.send2Slack(new SlackModel(responseList.get(0).getText()));
+        slackService.send2Slack(new SlackModel("@" + responseList.get(0).getUser().getScreenName() + " - " + responseList.get(0).getText()));
     }
 
     public void getRealTimeTweet(long userId) {
         twitterStreamClient.clearListeners();
-        TwitterListener listener = new TwitterListener(slackService);
-        twitterStreamClient.addListener(listener);
+        twitterStreamClient.addListener(twitterListener);
         twitterStreamClient.filter(new FilterQuery(userId));
     }
 

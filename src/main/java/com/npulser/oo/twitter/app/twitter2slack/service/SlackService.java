@@ -14,6 +14,10 @@ public class SlackService {
 
   private RestTemplate restTemplate;
 
+  public SlackService(RestTemplate restTemplate) {
+    this.restTemplate = restTemplate;
+  }
+
   public void send2Slack(SlackModel slackModel) {
     restTemplate.postForEntity(slackChannel, slackModel, String.class);
   }
