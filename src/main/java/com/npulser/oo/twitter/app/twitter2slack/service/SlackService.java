@@ -12,8 +12,9 @@ public class SlackService {
   @Value("${slack.channel}")
   private String slackChannel;
 
+  private RestTemplate restTemplate;
+
   public void send2Slack(SlackModel slackModel) {
-    RestTemplate restTemplate = new RestTemplate();
     restTemplate.postForEntity(slackChannel, slackModel, String.class);
   }
 }
