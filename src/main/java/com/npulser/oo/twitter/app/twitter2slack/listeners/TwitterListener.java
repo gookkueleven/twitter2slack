@@ -1,4 +1,4 @@
-package com.npulser.oo.twitter.app.twitter2slack.configs;
+package com.npulser.oo.twitter.app.twitter2slack.listeners;
 
 import com.npulser.oo.twitter.app.twitter2slack.models.SlackModel;
 import com.npulser.oo.twitter.app.twitter2slack.service.SlackService;

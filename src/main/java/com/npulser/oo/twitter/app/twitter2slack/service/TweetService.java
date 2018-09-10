@@ -1,6 +1,6 @@
 package com.npulser.oo.twitter.app.twitter2slack.service;
 
-import com.npulser.oo.twitter.app.twitter2slack.configs.TwitterListener;
+import com.npulser.oo.twitter.app.twitter2slack.listeners.TwitterListener;
 import com.npulser.oo.twitter.app.twitter2slack.models.SlackModel;
 
 import org.springframework.stereotype.Service;
@@ -20,6 +20,7 @@ import twitter4j.User;
     private TwitterStream twitterStreamClient;
     private SlackService slackService;
     private TwitterListener twitterListener;
+    
 
     public TweetService(Twitter twitterClient, TwitterStream twitterStreamClient, SlackService slackService, TwitterListener twitterListener) {
         this.twitterClient = twitterClient;
